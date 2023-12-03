@@ -19,15 +19,12 @@ class NosotrosFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Asegúrate de que NosotrosViewModel está correctamente implementado
         val NosotrosViewModel = ViewModelProvider(this)[NosotrosViewModel::class.java]
 
         _binding = ActivityNosotrosBinding.inflate(inflater, container, false)
 
-        // Acceso a la vista a través del binding
         binding.textNosotros.text = NosotrosViewModel.text.value
 
-        // Accediendo al botón directamente a través del binding
         binding.btnWeb.setOnClickListener {
             Web()
         }

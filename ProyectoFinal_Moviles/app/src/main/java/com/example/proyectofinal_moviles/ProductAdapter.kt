@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ProductAdapter(private val listaProductos: List<producto>) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
-    // ViewHolder que contiene las referencias a las vistas que quieres rellenar
     class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val productImage: ImageView = view.findViewById(R.id.product_image)
         val productName: TextView = view.findViewById(R.id.product_name)

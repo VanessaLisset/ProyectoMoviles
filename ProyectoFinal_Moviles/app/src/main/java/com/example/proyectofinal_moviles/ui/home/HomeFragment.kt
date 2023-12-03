@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectofinal_moviles.ProductAdapter
 import com.example.proyectofinal_moviles.R
 import com.example.proyectofinal_moviles.databinding.FragmentHomeBinding
-import com.example.proyectofinal_moviles.producto // Asegúrate de que esta sea la ruta correcta de tu clase Producto
+import com.example.proyectofinal_moviles.producto
 
 class HomeFragment : Fragment() {
 
@@ -22,7 +22,6 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // Configura el RecyclerView
         val productos = listOf(
             producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550"),
             producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550"),
@@ -35,8 +34,6 @@ class HomeFragment : Fragment() {
             producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550"),
 
         )
-
-        // Asegúrate de que el ID del RecyclerView en tu FragmentHomeBinding es recyclerView
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = ProductAdapter(productos)
