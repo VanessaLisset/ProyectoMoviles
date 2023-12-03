@@ -39,7 +39,6 @@ class HomeFragment : Fragment() {
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = ProductAdapter(productos) { producto ->
-                // Aquí manejas el clic del elemento
                 navegarADetalleFragment(producto)
             }
         }
@@ -53,7 +52,6 @@ class HomeFragment : Fragment() {
             }
         }
 
-        // Obtén el NavController y navega al DetalleFragment
         val navController = findNavController()
         navController.navigate(R.id.detalleragment, detalleFragment.arguments)
     }

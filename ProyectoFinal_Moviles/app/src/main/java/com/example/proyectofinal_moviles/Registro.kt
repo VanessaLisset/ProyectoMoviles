@@ -52,9 +52,25 @@ class Registro : AppCompatActivity() {
             val correo = findViewById<EditText>(R.id.edtCorreo).text.toString()
             val telefono = findViewById<EditText>(R.id.edtTelefono).text.toString()
             val password = findViewById<EditText>(R.id.edtPassword).text.toString()
+            var mensajeError = ""
 
+            if (usuario.isEmpty()) {
+                mensajeError += "\nUsuario"
+            }
+            if (correo.isEmpty()) {
+                mensajeError += "\nCorreo"
+            }
+            if (telefono.isEmpty()) {
+                mensajeError += "\nTeléfono"
+            }
+            if (password.isEmpty()) {
+                mensajeError += "\nContraseña"
+            }
             if (!checkBoxTerminos.isChecked) {
-                Toast.makeText(this, "Debes aceptar los términos y condiciones", Toast.LENGTH_SHORT).show()
+                mensajeError += "\nDebe aceptar los términos y condiciones"
+            }
+            if (mensajeError.isNotEmpty()) {
+                Toast.makeText(this, "Te falta ingresar:$mensajeError", Toast.LENGTH_LONG).show()
                 return
             }
 

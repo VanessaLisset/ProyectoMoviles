@@ -8,13 +8,11 @@
 
     <TextView
         android:id="@+id/textGallery"
-        android:layout_width="357dp"
-        android:layout_height="46dp"
+        android:layout_width="291dp"
+        android:layout_height="42dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="8dp"
-        android:drawableRight="@drawable/icon3"
-        android:gravity="center_vertical"
         android:text="Modificacion correo"
         android:textAlignment="center"
         android:textColor="@color/title"
@@ -22,16 +20,27 @@
         android:textStyle="bold"
         app:cornerRadius="14dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintHorizontal_bias="0.23"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnpermitir"
+        android:layout_width="37dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="44dp"
+        android:background="@color/white"
+        android:src="@drawable/icon3"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="349dp"
         android:layout_height="108dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="124dp"
         android:background="@drawable/marcaproductos"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
@@ -66,12 +75,56 @@
             android:textSize="20sp" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/txtNuevo"
+        android:layout_width="61dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="260dp"
+        android:text="@string/nuevo"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnModificar"
+        android:layout_width="307dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="368dp"
+        android:layout_marginEnd="71dp"
+        android:backgroundTint="#EFB810"
+        android:text="@string/modificar"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:cornerRadius="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.654"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/edtNuevoCorreo"
         android:layout_width="219dp"
         android:layout_height="37dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="240dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="252dp"
+        android:ems="10"
+        android:inputType="text"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtConfirmarCorreo"
+        android:layout_width="219dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="304dp"
         android:ems="10"
         android:inputType="text"
         android:textColor="#000000"
@@ -84,56 +137,13 @@
         android:id="@+id/txtConfirmar"
         android:layout_width="91dp"
         android:layout_height="21dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="312dp"
         android:gravity="center"
         android:text="@string/confirmar"
         android:textColor="#000000"
         android:textSize="18dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnModificar"
-        android:layout_width="252dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="352dp"
-        android:layout_marginEnd="71dp"
-        android:backgroundTint="#EFB810"
-        android:text="@string/modificar"
-        android:textColor="@color/white"
-        app:cornerRadius="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtNuevo"
-        android:layout_width="61dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="248dp"
-        android:text="@string/nuevo"
-        android:textColor="#000000"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/edtConfirmarCorreo"
-        android:layout_width="219dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="292dp"
-        android:ems="10"
-        android:inputType="text"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
