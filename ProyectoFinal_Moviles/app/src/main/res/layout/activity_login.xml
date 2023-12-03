@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login">
+
+    <ImageView
+        android:id="@+id/imglogin"
+        android:layout_width="121dp"
+        android:layout_height="144dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="124dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img1" />
+
+    <TextView
+        android:id="@+id/txtLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="100dp"
+        android:text="@string/loging"
+        android:textColor="@color/title"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:cornerRadius="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnIngresar"
+        android:layout_width="283dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="448dp"
+        android:backgroundTint="#EFB810"
+        android:text="@string/ingresar"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:cornerRadius="19dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtUs"
+        android:layout_width="285dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="101dp"
+        android:layout_marginTop="344dp"
+        android:layout_marginEnd="100dp"
+        android:background="@drawable/marcaredonda"
+        android:drawableStart="@drawable/baseline_email_24"
+        android:drawablePadding="20dp"
+        android:ems="10"
+        android:hint="@string/user"
+        android:inputType="textEmailAddress"
+        android:paddingStart="20dp"
+        android:textColor="#A8A8A8"
+        android:textColorHint="#A8A8A8"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="285dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="396dp"
+        android:background="@drawable/marcaredonda"
+        android:drawableStart="@drawable/contrasena"
+        android:drawablePadding="20dp"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:paddingStart="20dp"
+        android:textColor="@color/hint"
+        android:textColorHint="@color/hint"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtNocuenta"
+        android:layout_width="125dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="512dp"
+        android:text="¿No tienes cuenta?"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Registrate"
+        android:layout_width="69dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="512dp"
+        android:text="Registrate"
+        android:textColor="@color/azul"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
