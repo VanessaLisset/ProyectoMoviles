@@ -63,6 +63,8 @@ Lacinia cras potenti hac et orci ante mollis magnis pharetra, rhoncus iaculis mo
     <string name="confirmar">Confirmar: </string>
     <string name="correoActualizar">vanessaLisset12@gmail.com</string>
     <string name="modificar">Modificar</string>
+    <!--    Detalle producto-->
+    <string name="Rentar">Rentar</string>
 
     <string name="salir">Salir</string>
     <!-- TODO: Remove or change this placeholder text -->

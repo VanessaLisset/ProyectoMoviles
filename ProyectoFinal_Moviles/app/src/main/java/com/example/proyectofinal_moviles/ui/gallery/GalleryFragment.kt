@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.proyectofinal_moviles.Registro
+import com.example.proyectofinal_moviles.ui.gallery.GalleryViewModel
 import com.example.proyectofinal_moviles.databinding.FragmentGalleryBinding
 
 class GalleryFragment : Fragment() {
@@ -23,14 +25,25 @@ class GalleryFragment : Fragment() {
         _binding = FragmentGalleryBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.btnModificar.setOnClickListener {
-            modificarCorreo()
+
+        binding.edtNuevoCorreo.isEnabled = false
+        binding.edtConfirmarCorreo.isEnabled = false
+
+        binding.btnpermitir.setOnClickListener {
+
+            binding.edtNuevoCorreo.isEnabled = true
+            binding.edtConfirmarCorreo.isEnabled = true
         }
         val ultimoUsuario = Registro.usuariosRegistrados.lastOrNull()
         ultimoUsuario?.let {
 
             binding.txtNombre.text = it.correo
         }
+        binding.btnModificar.setOnClickListener {
+            modificarCorreo()
+
+        }
+
 
         return root
     }
@@ -57,6 +70,8 @@ class GalleryFragment : Fragment() {
             binding.txtNombre.text = nuevoCorreo
             binding.edtNuevoCorreo.text.clear()
             binding.edtConfirmarCorreo.text.clear()
+            binding.edtNuevoCorreo.isEnabled = false
+            binding.edtConfirmarCorreo.isEnabled = false
             Toast.makeText(context, "Correo modificado con éxito", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(context, "Usuario no encontrado", Toast.LENGTH_SHORT).show()
