@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectofinal_moviles.ProductAdapter
 import com.example.proyectofinal_moviles.R
 import com.example.proyectofinal_moviles.databinding.FragmentHomeBinding
 import com.example.proyectofinal_moviles.producto
+import com.example.proyectofinal_moviles.ui.Detalle.Detalleragment
 
 class HomeFragment : Fragment() {
 
@@ -23,26 +25,40 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         val productos = listOf(
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550"),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550"),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550"),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550"),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550"),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550"),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550"),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550"),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550"),
+            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 1),
+            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 2),
+            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 3),
+            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 4),
+            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 5),
+            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 6),
+            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 7),
+            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 8),
+            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 9),
 
         )
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = ProductAdapter(productos)
+            adapter = ProductAdapter(productos) { producto ->
+                // Aquí manejas el clic del elemento
+                navegarADetalleFragment(producto)
+            }
         }
-
         return root
     }
 
-    override fun onDestroyView() {
+    private fun navegarADetalleFragment(producto: producto) {
+        val detalleFragment = Detalleragment().apply {
+            arguments = Bundle().apply {
+                putString("claveProducto", producto.id.toString())
+            }
+        }
+
+        // Obtén el NavController y navega al DetalleFragment
+        val navController = findNavController()
+        navController.navigate(R.id.detalleragment, detalleFragment.arguments)
+    }
+
+override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
