@@ -28,34 +28,34 @@
         android:layout_width="91dp"
         android:layout_height="91dp"
         android:layout_marginStart="160dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="52dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/img1" />
-
-    <TextView
-        android:id="@+id/Nos"
-        android:layout_width="373dp"
-        android:layout_height="464dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="168dp"
-        android:justificationMode="inter_word"
-        android:padding="16dp"
-        android:text="@string/TxtNosotros"
-        android:textColor="@color/title"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnWeb"
         android:layout_width="56dp"
         android:layout_height="63dp"
         android:layout_marginStart="176dp"
-        android:layout_marginTop="648dp"
+        android:layout_marginTop="636dp"
         android:clickable="true"
         android:src="@drawable/icon2"
         app:backgroundTint="@color/yellow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Nos"
+        android:layout_width="373dp"
+        android:layout_height="464dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="156dp"
+        android:justificationMode="inter_word"
+        android:padding="16dp"
+        android:text="@string/TxtNosotros"
+        android:textColor="@color/title"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
