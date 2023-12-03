@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ProductAdapter(private val listaProductos: List<producto>) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class ProductAdapter(private val listaProductos: List<producto>, private val onClick: (producto) -> Unit) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val productImage: ImageView = view.findViewById(R.id.product_image)
@@ -32,7 +32,7 @@ class ProductAdapter(private val listaProductos: List<producto>) : RecyclerView.
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val producto = listaProductos[position]
-        holder.bind(producto)
+        holder.itemView.setOnClickListener { onClick(producto) }
     }
 
     override fun getItemCount() = listaProductos.size

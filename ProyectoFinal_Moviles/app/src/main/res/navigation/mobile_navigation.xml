@@ -58,5 +58,10 @@
         android:name="com.example.proyectofinal_moviles.ui.TerminosYcondiciones.TerminosYcondicionesFragment"
         android:label="@string/Temrs"
         tools:layout="@layout/activity_menu_terminos" />
+    <fragment
+        android:id="@+id/detalleragment"
+        android:name="com.example.proyectofinal_moviles.ui.Detalle.Detalleragment"
+        android:label="activity_detalle"
+        tools:layout="@layout/activity_detalle" />
 
 </navigation>

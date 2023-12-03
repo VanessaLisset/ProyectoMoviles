@@ -32,7 +32,7 @@ class Productos : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_Favoritos,
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_Favoritos, R.id.detalleragment,
                 R.id.nav_Nosotros, R.id.nav_compras, R.id.nav_ayuda, R.id.nav_historial, R.id.nav_terminos
             ), drawerLayout
         )
