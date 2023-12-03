@@ -13,6 +13,38 @@
         android:theme="@style/Theme.ProyectoFinal_Moviles"
         tools:targetApi="31">
         <activity
+            android:name=".detalle"
+            android:exported="false" />
+        <activity
+            android:name=".MenuTerminos"
+            android:exported="false" />
+        <activity
+            android:name=".terminos"
+            android:exported="false" />
+        <activity
+            android:name=".WebViewActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ProyectoFinal_Moviles.NoActionBar" />
+        <activity
+            android:name=".Favoritos"
+            android:exported="false" />
+        <activity
+            android:name=".Historial"
+            android:exported="false" />
+        <activity
+            android:name=".Compras"
+            android:exported="false" />
+        <activity
+            android:name=".Registro"
+            android:exported="false" />
+        <activity
+            android:name=".login"
+            android:exported="false" />
+        <activity
+            android:name=".Productos"
+            android:exported="false"
+            android:theme="@style/Theme.ProyectoFinal_Moviles.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
