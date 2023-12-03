@@ -71,6 +71,17 @@
             android:textSize="30sp"
             android:textStyle="bold" />
 
+        <Button
+            android:id="@+id/favorito"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:layout_above="@+id/product_price"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="20dp"
+            android:layout_toEndOf="@+id/product_name"
+            android:src="@drawable/iconfav"
+            app:icon="@drawable/estrella" />
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
