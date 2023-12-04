@@ -45,6 +45,7 @@ class CartAdapter(
             val removedItem = items.removeAt(holder.adapterPosition)
             notifyItemRemoved(holder.adapterPosition)
             onItemRemoved(removedItem)
+            updateTotal() // Actualizamos el total después de la eliminación
         }
     }
 
@@ -54,5 +55,14 @@ class CartAdapter(
         items.clear()
         items.addAll(newItems)
         notifyDataSetChanged()
+    }
+
+    private fun updateTotal() {
+        var totalSum = 0.0
+        for (item in items) {
+            val precioPorDia = item.precio.replace("$", "").trim().toDoubleOrNull() ?: 0.0
+            val totalItem = precioPorDia * item.diasARentar
+            totalSum += totalItem
+        }
     }
 }

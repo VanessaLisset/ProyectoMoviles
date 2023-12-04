@@ -19,6 +19,10 @@ class SharedViewModel : ViewModel() {
         val updatedCart = currentCart.filter { it.id != producto.id }
         _carrito.value = updatedCart
     }
+    fun limpiarCarrito() {
+        _carrito.value = emptyList()
+    }
+
 }
 
 
