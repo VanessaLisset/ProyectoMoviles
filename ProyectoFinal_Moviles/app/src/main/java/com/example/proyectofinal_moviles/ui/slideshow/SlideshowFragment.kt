@@ -46,6 +46,7 @@ class SlideshowFragment : Fragment() {
 
         val ultimoUsuario = Registro.usuariosRegistrados.lastOrNull()
         ultimoUsuario?.let {
+            binding.txtMostrarID.text = it.id.toString()
             binding.txtMostrarNombre.text = it.usuario
             binding.txtMostrarCorreo.text = it.correo
             binding.txtMostrarTelefono.text = it.telefono

@@ -9,11 +9,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.proyectofinal_moviles.Registro
-import com.example.proyectofinal_moviles.databinding.FragmentSlideshowBinding
+import com.example.proyectofinal_moviles.databinding.ActivityMenuTerminosBinding
 
 class TerminosYcondicionesFragment : Fragment() {
 
-    private var _binding: FragmentSlideshowBinding? = null
+    private var _binding: ActivityMenuTerminosBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,7 +24,7 @@ class TerminosYcondicionesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSlideshowBinding.inflate(inflater, container, false)
+        _binding = ActivityMenuTerminosBinding.inflate(inflater, container, false)
         val root: View = binding.root
         return root
     }

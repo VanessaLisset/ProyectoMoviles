@@ -22,8 +22,8 @@
 
         <TextView
             android:id="@+id/favorite_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="85dp"
+            android:layout_height="61dp"
             android:layout_alignTop="@id/favorite_image"
             android:layout_marginStart="7dp"
             android:layout_marginTop="2dp"
@@ -35,11 +35,11 @@
 
         <TextView
             android:id="@+id/favorite_details"
-            android:layout_width="138dp"
+            android:layout_width="127dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/favorite_name"
-            android:layout_marginStart="7dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="5dp"
             android:layout_toEndOf="@id/favorite_image"
             android:text="@string/product_details1"
             android:textColor="@color/black"
@@ -47,11 +47,11 @@
 
         <TextView
             android:id="@+id/favorite_details2"
-            android:layout_width="147dp"
+            android:layout_width="128dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/favorite_name"
-            android:layout_marginStart="7dp"
-            android:layout_marginTop="33dp"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="29dp"
             android:layout_toEndOf="@id/favorite_image"
             android:text="@string/product_details2"
             android:textColor="@color/black"
@@ -59,25 +59,26 @@
 
         <TextView
             android:id="@+id/favorite_price"
-            android:layout_width="128dp"
+            android:layout_width="86dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/favorite_details"
-            android:layout_marginStart="112dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginStart="141dp"
+            android:layout_marginTop="-26dp"
             android:layout_toEndOf="@id/favorite_image"
             android:gravity="center_horizontal"
             android:text="@string/product_price1"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/favoritoEliminar"
-            android:layout_width="50dp"
-            android:layout_height="90dp"
+            android:layout_width="55dp"
+            android:layout_height="25dp"
             android:layout_above="@+id/favorite_price"
+            android:layout_marginStart="15dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="52dp"
             android:layout_toEndOf="@+id/favorite_name"
             android:src="@drawable/delete"
             app:icon="@drawable/delete" />

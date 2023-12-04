@@ -33,8 +33,10 @@ class ProductAdapter(private val listaProductos: List<producto>, private val onC
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val producto = listaProductos[position]
+        holder.bind(producto)
         holder.itemView.setOnClickListener { onClick(producto) }
         holder.btnFavorito.setOnClickListener { onFavoritoClick(producto) }
     }
+
     override fun getItemCount() = listaProductos.size
 }
