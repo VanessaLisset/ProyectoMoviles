@@ -25,16 +25,15 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         val productos = listOf(
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 1),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 2),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 3),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 4),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 5),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 6),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 7),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 8),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 9),
-
+            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 1,""),
+            producto(R.drawable.prod2, "Excavadora", "Marca:Cat Construction", "Modelo Y23", "$550", 2,""),
+            producto(R.drawable.prod3, "PS L", "Marca: terrenaitor", "Modelo: 2EYplus", "3550", 3,"Esta serie PS L, ha sido especialmente diseñada, para que los operadores hombre caminando, utilicen un equipo seguro y confortable en su trabajo. Gracias a su suave desplazamiento de ascenso y descenso, las operaciones de estiba, se vuelven más seguras y rápidas. "),
+            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 4,""),
+            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 5,""),
+            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 6,""),
+            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 7,""),
+            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 8,""),
+            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 9,""),
         )
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
