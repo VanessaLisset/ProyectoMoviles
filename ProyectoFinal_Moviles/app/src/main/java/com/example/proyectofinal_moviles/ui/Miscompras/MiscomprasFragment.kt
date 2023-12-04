@@ -1,14 +1,15 @@
 package com.example.proyectofinal_moviles.ui.Miscompras
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectofinal_moviles.SharedViewModel
 import com.example.proyectofinal_moviles.databinding.ActivityComprasBinding
+import com.example.proyectofinal_moviles.producto
 
 class MiscomprasFragment : Fragment() {
     private var _binding: ActivityComprasBinding? = null
@@ -29,18 +30,24 @@ class MiscomprasFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        cartAdapter = CartAdapter(mutableListOf()) // Inicialmente vacío
-        binding.rvCart.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = cartAdapter
+        cartAdapter = CartAdapter(mutableListOf()) { producto ->
+            eliminarDelCarrito(producto)
         }
+        binding.rvCart.layoutManager = LinearLayoutManager(context)
+        binding.rvCart.adapter = cartAdapter
+    }
+
+    private fun eliminarDelCarrito(producto: producto) {
+        sharedViewModel.eliminarDelCarrito(producto)
+        Toast.makeText(context, "Producto eliminado del carrito", Toast.LENGTH_SHORT).show()
     }
 
     private fun observeCart() {
         sharedViewModel.carrito.observe(viewLifecycleOwner) { updatedCart ->
-            cartAdapter.updateCart(updatedCart)
+            cartAdapter.setData(updatedCart)
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

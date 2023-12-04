@@ -1,21 +1,18 @@
 package com.example.proyectofinal_moviles.ui.Miscompras
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectofinal_moviles.R
 import com.example.proyectofinal_moviles.producto
 
-class CartAdapter(private val items: MutableList<producto>) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
-
-    fun updateCart(newItems: List<producto>) {
-        items.clear()
-        items.addAll(newItems)
-        notifyDataSetChanged()
-    }
+class CartAdapter(
+    private var items: MutableList<producto>,
+    private val onItemRemoved: (producto) -> Unit
+) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
     class CartViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val productName: TextView = view.findViewById(R.id.tvCartProductName)
@@ -23,7 +20,7 @@ class CartAdapter(private val items: MutableList<producto>) : RecyclerView.Adapt
         val daysToRent: TextView = view.findViewById(R.id.tvCartDaysToRent)
         val totalPrice: TextView = view.findViewById(R.id.tvCartTotalPrice)
         val productImage: ImageView = view.findViewById(R.id.ivCartProduct)
-
+        val btnRemoveFromCart: Button = view.findViewById(R.id.btnRemoveFromCart)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
@@ -39,11 +36,23 @@ class CartAdapter(private val items: MutableList<producto>) : RecyclerView.Adapt
 
         val precioPorDia = item.precio.replace("$", "").trim().toDoubleOrNull() ?: 0.0
         val total = precioPorDia * item.diasARentar
-        item.precioTotal = "$${total}" // Actualiza el precio total en el objeto producto.
+        item.precioTotal = "$${total}"
         holder.totalPrice.text = "Total: ${item.precioTotal}"
         holder.productImage.setImageResource(item.imagen)
+
+        holder.btnRemoveFromCart.setOnClickListener {
+            // Aquí invocamos el callback para manejar la eliminación
+            val removedItem = items.removeAt(holder.adapterPosition)
+            notifyItemRemoved(holder.adapterPosition)
+            onItemRemoved(removedItem)
+        }
     }
 
-
     override fun getItemCount(): Int = items.size
+
+    fun setData(newItems: List<producto>) {
+        items.clear()
+        items.addAll(newItems)
+        notifyDataSetChanged()
+    }
 }

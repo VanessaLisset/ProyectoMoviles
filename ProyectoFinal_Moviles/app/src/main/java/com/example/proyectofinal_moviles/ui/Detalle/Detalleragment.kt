@@ -136,6 +136,7 @@ class Detalleragment : Fragment() {
                 producto.precioTotal = calcularPrecioTotal(precioPorDia, diasARentar).toString()
                 sharedViewModel.agregarAlCarrito(producto)
                 resetDetalleView()
+                Toast.makeText(context, "Artículo ${producto.nombre} agregado al carrito", Toast.LENGTH_LONG).show()
             }
         }
     }
