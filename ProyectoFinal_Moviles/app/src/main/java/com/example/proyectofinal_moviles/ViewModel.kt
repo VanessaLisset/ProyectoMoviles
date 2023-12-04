@@ -22,6 +22,12 @@ class SharedViewModel : ViewModel() {
     fun limpiarCarrito() {
         _carrito.value = emptyList()
     }
+    private val _historial = MutableLiveData<List<producto>>()
+    val historial: LiveData<List<producto>> = _historial
+
+    fun agregarAHistorial(productos: List<producto>) {
+        _historial.value = _historial.value.orEmpty() + productos
+    }
 
 }
 

@@ -4,36 +4,39 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.proyectofinal_moviles.HistorialAdapter
 import com.example.proyectofinal_moviles.databinding.ActivityHistorialBinding
-import com.example.proyectofinal_moviles.ui.Historial.HistorialViewModel
+import com.example.proyectofinal_moviles.SharedViewModel
 
 class HistorialFragment : Fragment() {
 
     private var _binding: ActivityHistorialBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var sharedViewModel: SharedViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val HistorialViewModel =
-            ViewModelProvider(this).get(HistorialViewModel::class.java)
-
+        sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
         _binding = ActivityHistorialBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
 
-        val textView: TextView = binding.textHist
-        HistorialViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupRecyclerView()
+    }
+
+    private fun setupRecyclerView() {
+        binding.recyclerViewHistorial.layoutManager = LinearLayoutManager(context)
+        sharedViewModel.historial.observe(viewLifecycleOwner) { historial ->
+            binding.recyclerViewHistorial.adapter = HistorialAdapter(historial)
         }
-        return root
     }
 
     override fun onDestroyView() {

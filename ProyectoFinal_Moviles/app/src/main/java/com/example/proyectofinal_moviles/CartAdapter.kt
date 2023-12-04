@@ -41,11 +41,10 @@ class CartAdapter(
         holder.productImage.setImageResource(item.imagen)
 
         holder.btnRemoveFromCart.setOnClickListener {
-            // Aquí invocamos el callback para manejar la eliminación
             val removedItem = items.removeAt(holder.adapterPosition)
             notifyItemRemoved(holder.adapterPosition)
             onItemRemoved(removedItem)
-            updateTotal() // Actualizamos el total después de la eliminación
+            updateTotal()
         }
     }
 

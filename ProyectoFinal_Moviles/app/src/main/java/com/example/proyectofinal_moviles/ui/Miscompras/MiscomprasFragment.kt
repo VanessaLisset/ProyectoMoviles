@@ -43,6 +43,7 @@ class MiscomprasFragment : Fragment() {
 
                 Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show()
 
+                sharedViewModel.agregarAHistorial(carrito)
                 sharedViewModel.limpiarCarrito()
 
             } else {
