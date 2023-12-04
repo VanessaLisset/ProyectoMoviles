@@ -3,6 +3,7 @@ package com.example.proyectofinal_moviles.ui.Miscompras
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectofinal_moviles.R
@@ -21,6 +22,8 @@ class CartAdapter(private val items: MutableList<producto>) : RecyclerView.Adapt
         val pricePerDay: TextView = view.findViewById(R.id.tvCartProductPricePerDay)
         val daysToRent: TextView = view.findViewById(R.id.tvCartDaysToRent)
         val totalPrice: TextView = view.findViewById(R.id.tvCartTotalPrice)
+        val productImage: ImageView = view.findViewById(R.id.ivCartProduct)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
@@ -34,12 +37,11 @@ class CartAdapter(private val items: MutableList<producto>) : RecyclerView.Adapt
         holder.pricePerDay.text = "Precio al Día: ${item.precio}"
         holder.daysToRent.text = "Días a rentar: ${item.diasARentar}"
 
-        // Suponiendo que `precio` es un String que representa el precio por día sin el símbolo de moneda,
-        // y que el precio total se calcula basado en los días a rentar.
         val precioPorDia = item.precio.replace("$", "").trim().toDoubleOrNull() ?: 0.0
         val total = precioPorDia * item.diasARentar
         item.precioTotal = "$${total}" // Actualiza el precio total en el objeto producto.
         holder.totalPrice.text = "Total: ${item.precioTotal}"
+        holder.productImage.setImageResource(item.imagen)
     }
 
 

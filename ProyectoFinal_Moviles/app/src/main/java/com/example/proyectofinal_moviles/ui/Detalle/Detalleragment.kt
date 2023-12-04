@@ -84,10 +84,10 @@ class Detalleragment : Fragment() {
 
         }
         sharedPref = requireActivity().getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
-        // Obtener el ID del producto de los argumentos
+
         val productoId = arguments?.getString("claveProducto")?.toIntOrNull()
 
-        // Establecer la cantidad inicial de días a rentar desde SharedPreferences
+
         diasARentar = sharedPref.getInt("DiasARentar_${productoId ?: 0}", 1)
         binding.txtQuantity.text = diasARentar.toString()
 
@@ -145,7 +145,7 @@ class Detalleragment : Fragment() {
     }
 
     private fun resetDetalleView() {
-        // Restablece los días a rentar a 1 y actualiza la UI
+
         diasARentar = 1
         binding.txtQuantity.text = diasARentar.toString()
         actualizarPrecioTotal()
