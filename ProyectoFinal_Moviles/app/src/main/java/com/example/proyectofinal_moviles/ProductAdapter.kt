@@ -3,18 +3,21 @@ package com.example.proyectofinal_moviles
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ProductAdapter(private val listaProductos: List<producto>, private val onClick: (producto) -> Unit) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class ProductAdapter(private val listaProductos: List<producto>, private val onClick: (producto) -> Unit, private val onFavoritoClick: (producto) -> Unit) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val productImage: ImageView = view.findViewById(R.id.product_image)
-        val productName: TextView = view.findViewById(R.id.product_name)
-        val productBrand: TextView = view.findViewById(R.id.product_details)
-        val productModel: TextView = view.findViewById(R.id.product_details2)
-        val productPrice: TextView = view.findViewById(R.id.product_price)
+        val productImage: ImageView = view.findViewById(R.id.favorite_image)
+        val productName: TextView = view.findViewById(R.id.favorite_name)
+        val productBrand: TextView = view.findViewById(R.id.favorite_details)
+        val productModel: TextView = view.findViewById(R.id.favorite_details2)
+        val productPrice: TextView = view.findViewById(R.id.favorite_price)
+        val btnFavorito: Button = view.findViewById(R.id.favorito)
+
 
         fun bind(producto: producto) {
             productImage.setImageResource(producto.imagen)
@@ -22,6 +25,8 @@ class ProductAdapter(private val listaProductos: List<producto>, private val onC
             productBrand.text = producto.marca
             productModel.text = producto.modelo
             productPrice.text = producto.precio
+
+
         }
     }
 
@@ -33,6 +38,7 @@ class ProductAdapter(private val listaProductos: List<producto>, private val onC
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val producto = listaProductos[position]
         holder.itemView.setOnClickListener { onClick(producto) }
+        holder.btnFavorito.setOnClickListener { onFavoritoClick(producto) }
     }
 
     override fun getItemCount() = listaProductos.size

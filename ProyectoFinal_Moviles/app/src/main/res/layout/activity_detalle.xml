@@ -30,20 +30,20 @@
     android:padding="16dp">
 
     <ImageView
-        android:id="@+id/product_image"
+        android:id="@+id/favorite_image"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
         android:src="@drawable/prod1" />
 
     <TextView
-        android:id="@+id/product_name"
+        android:id="@+id/favorite_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:text="Nombre del producto" />
 
     <TextView
-        android:id="@+id/product_details"
+        android:id="@+id/favorite_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
