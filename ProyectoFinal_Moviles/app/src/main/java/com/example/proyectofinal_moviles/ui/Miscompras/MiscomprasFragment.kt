@@ -4,35 +4,42 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.proyectofinal_moviles.SharedViewModel
 import com.example.proyectofinal_moviles.databinding.ActivityComprasBinding
 
 class MiscomprasFragment : Fragment() {
-
     private var _binding: ActivityComprasBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var sharedViewModel: SharedViewModel
+    private lateinit var cartAdapter: CartAdapter
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val MiscomprasViewModel =
-            ViewModelProvider(this).get(MiscomprasViewModel::class.java)
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
         _binding = ActivityComprasBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
 
-        val textView: TextView = binding.textComp
-        MiscomprasViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupRecyclerView()
+        observeCart()
+    }
+
+    private fun setupRecyclerView() {
+        cartAdapter = CartAdapter(mutableListOf()) // Inicialmente vacío
+        binding.rvCart.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = cartAdapter
         }
-        return root
+    }
+
+    private fun observeCart() {
+        sharedViewModel.carrito.observe(viewLifecycleOwner) { updatedCart ->
+            cartAdapter.updateCart(updatedCart)
+        }
     }
 
     override fun onDestroyView() {

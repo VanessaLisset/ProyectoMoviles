@@ -1,6 +1,7 @@
 package com.example.proyectofinal_moviles.ui.Detalle
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,17 +14,22 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.proyectofinal_moviles.R
+import com.example.proyectofinal_moviles.SharedViewModel
 import com.example.proyectofinal_moviles.databinding.ActivityDetalleBinding
 import com.example.proyectofinal_moviles.producto
 
 class Detalleragment : Fragment() {
     private var _binding: ActivityDetalleBinding? = null
     private val binding get() = _binding!!
+    private var precioPorDia: Double = 0.0
+    private var diasARentar: Int = 1
+    private lateinit var sharedPref: SharedPreferences
+    private lateinit var sharedViewModel: SharedViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-
+        sharedPref = requireActivity().getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
         _binding = ActivityDetalleBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -31,25 +37,34 @@ class Detalleragment : Fragment() {
         productoId?.let {
             val productoEncontrado = obtenerProducto(it)
             productoEncontrado?.let { producto ->
+                binding.productImage.setImageResource(producto.imagen)
                 binding.txtproductName.text = producto.nombre
                 binding.txtproductMarca.text = producto.marca
                 binding.txtproductModelo.text = producto.modelo
                 binding.txtproductDescri.text = producto.descrip
-                binding.txtproductPrice.text = producto.precio
-                binding.productImage.setImageResource(producto.imagen)
+
+                val precioSinSimbolo = producto.precio.replace("$", "").trim()
+                precioPorDia = precioSinSimbolo.toDoubleOrNull() ?: 0.0
+
+                binding.txtproductPrice.text = getString(R.string.total_format, precioPorDia)
+
+                actualizarPrecioTotal()
             }
         }
-        return root
+        productoId?.let {
+            diasARentar = sharedPref.getInt("DiasARentar_$it", 1)
+        }
+        binding.txtQuantity.text = diasARentar.toString()
 
+        return root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val ratingBar = view.findViewById<RatingBar>(R.id.ratingBar)
         val starCountTextView = view.findViewById<TextView>(R.id.tvStarCount)
-
         val productId = obtenerIdDelProducto()
+        sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
-        val sharedPref = activity?.getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
 
         val savedRating = sharedPref?.getFloat("RatingForProduct_$productId", -1f) ?: -1f
 
@@ -66,36 +81,83 @@ class Detalleragment : Fragment() {
                 putFloat("RatingForProduct_$productId", rating)
                 apply()
             }
+
         }
+        sharedPref = requireActivity().getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
+        // Obtener el ID del producto de los argumentos
+        val productoId = arguments?.getString("claveProducto")?.toIntOrNull()
+
+        // Establecer la cantidad inicial de días a rentar desde SharedPreferences
+        diasARentar = sharedPref.getInt("DiasARentar_${productoId ?: 0}", 1)
+        binding.txtQuantity.text = diasARentar.toString()
+
+        binding.btnIncrease.setOnClickListener {
+            diasARentar++
+            binding.txtQuantity.text = diasARentar.toString()
+            sharedPref.edit().putInt("DiasARentar_${productoId ?: 0}", diasARentar).apply()
+            actualizarPrecioTotal()
+        }
+
+        binding.btnDecrease.setOnClickListener {
+            if (diasARentar > 1) {
+                diasARentar--
+                binding.txtQuantity.text = diasARentar.toString()
+                sharedPref.edit().putInt("DiasARentar_${productoId ?: 0}", diasARentar).apply()
+                actualizarPrecioTotal()
+            }
+        }
+        binding.btnRentar.setOnClickListener {
+            agregarAlCarrito()
+        }
+
 
 
     var diasARentar = sharedPref?.getInt("DiasARentar_$productId", 1) ?: 1
     binding.txtQuantity.text = diasARentar.toString()
 
-    binding.btnIncrease.setOnClickListener {
-        diasARentar++
-        binding.txtQuantity.text = diasARentar.toString()
-        sharedPref?.edit()?.putInt("DiasARentar_$productId", diasARentar)?.apply()
-    }
 
-    binding.btnDecrease.setOnClickListener {
-        if (diasARentar > 1) {
-            diasARentar--
-            binding.txtQuantity.text = diasARentar.toString()
-            sharedPref?.edit()?.putInt("DiasARentar_$productId", diasARentar)?.apply()
-        }
-    }
+
 }
+    private fun actualizarPrecioTotal() {
+        val precioTotal = precioPorDia * diasARentar
+        binding.txtproductPrice.text = getString(R.string.total_format, precioTotal)
+    }
 
     private fun obtenerIdDelProducto(): String {
         return "id_del_producto_actual"
     }
+
+    private fun agregarAlCarrito() {
+        val productoId = arguments?.getString("claveProducto")?.toIntOrNull()
+        productoId?.let { id ->
+            val productoActual = obtenerProducto(id)
+            productoActual?.let { producto ->
+                producto.diasARentar = diasARentar
+                producto.precioTotal = calcularPrecioTotal(precioPorDia, diasARentar).toString()
+                sharedViewModel.agregarAlCarrito(producto)
+                resetDetalleView()
+            }
+        }
+    }
+
+    private fun calcularPrecioTotal(precioPorDia: Double, diasARentar: Int): Double {
+        return precioPorDia * diasARentar
+    }
+
+    private fun resetDetalleView() {
+        // Restablece los días a rentar a 1 y actualiza la UI
+        diasARentar = 1
+        binding.txtQuantity.text = diasARentar.toString()
+        actualizarPrecioTotal()
+    }
+
 
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 
     private fun obtenerProducto(id_producto: Int): producto? {
         val productos = listOf(
