@@ -25,16 +25,23 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         val productos = listOf(
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 1,""),
-            producto(R.drawable.prod2, "Excavadora", "Marca:Cat Construction", "Modelo Y23", "$550", 2,""),
-            producto(R.drawable.prod3, "PS L", "Marca: terrenaitor", "Modelo: 2EYplus", "3550", 3,"Esta serie PS L, ha sido especialmente diseñada, para que los operadores hombre caminando, utilicen un equipo seguro y confortable en su trabajo. Gracias a su suave desplazamiento de ascenso y descenso, las operaciones de estiba, se vuelven más seguras y rápidas. "),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 4,""),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 5,""),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 6,""),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 7,""),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 8,""),
-            producto(R.drawable.prod1, "Compactadora", "Marca X", "Modelo Y", "$550", 9,""),
+            producto(R.drawable.prod1, "Caterpillar D8T Bulldozer", "Marca: Caterpillar", "Modelo: D8T", "$1000", 1, "Un potente bulldozer para trabajos de construcción pesada y minería."),
+            producto(R.drawable.prod2, "Liebherr LTM 11200-9.1", "Marca: Liebherr", "Modelo: LTM 11200", "$2000", 2, "Una de las grúas móviles más grandes y potentes, utilizada en construcción y montaje de estructuras."),
+            producto(R.drawable.prod3, "Komatsu PC8000-6 Excavadora", "Marca: Komatsu", "Modelo: PC8000-6", "$3000", 3, "Excavadora de minería de alto rendimiento para operaciones de gran escala."),
+            producto(R.drawable.prod3, "Volvo A60H Dumper Articulado", "Marca: Volvo", "Modelo: A60H", "$500", 4, "Camión dumper para transporte de grandes cantidades de material en construcción y minería."),
+            producto(R.drawable.prod3, "John Deere 9620RX Tractor", "Marca: John", "Modelo: 9620RX", "$5000", 5, "Tractor de alta potencia para trabajos agrícolas extensivos."),
+            producto(R.drawable.prod3, "Mack Granite Camión de Basura", "Marca: Mack", "Modelo: Granite", "$3424", 6, "Camión robusto diseñado para la recolección y transporte de residuos."),
+            producto(R.drawable.prod3, "Hitachi ZX870 Excavadora", "Marca: Hitachi", "Modelo: ZX870", "$5934", 7, "Excavadora de gran tamaño para construcción y proyectos de ingeniería civil."),
+            producto(R.drawable.prod3, "MAN TGX 41.640 Camión", "Marca: MAN", "Modelo: TGX 41.640", "$900", 8, "Camión para transporte de cargas pesadas y sobredimensionadas."),
+            producto(R.drawable.prod3, "Terex Demag AC 500-2", "Marca: Terex", "Modelo: AC 500-2", "$508", 9, "Grúa móvil con capacidades de elevación excepcionales, adecuada para terrenos difíciles."),
+            producto(R.drawable.prod3, "Bobcat T870 Cargador", "Marca: Bobcat", "Modelo: T870", "$400", 10, "Cargador compacto de alto rendimiento para construcción y paisajismo."),
+            producto(R.drawable.prod3, "Doosan DA40 Camión", "Marca: Doosan", "Modelo: DA40", "$6509", 11, "Camión articulado para operaciones de minería y construcción de carreteras."),
+            producto(R.drawable.prod3, "JCB 220X Excavadora", "Marca: JCB", "Modelo: 220X", "$837", 12, "Excavadora robusta y eficiente para proyectos de construcción de mediana a gran escala."),
+            producto(R.drawable.prod3, "Case IH Magnum 380", "Marca: Case IH", "Modelo: Magnum", "$6721", 13, "Tractor de gran potencia para tareas agrícolas exigentes."),
+            producto(R.drawable.prod3, "Kenworth W990 Camión", "Marca: Kenworth", "Modelo: W990", "$1092", 14, "Camión diseñado para transporte de larga distancia, combinando comodidad y rendimiento."),
+            producto(R.drawable.prod3, "Bell B45E Camión Dumper", "Marca: Bell", "Modelo: B45E", "$922", 15, "Camión dumper para el transporte eficiente de materiales en minas y grandes proyectos de construcción.")
         )
+
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = ProductAdapter(productos) { producto ->
