@@ -1,77 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Detalle.Detalleragment">
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/txtDeta"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.019" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp"
-        tools:layout_editor_absoluteX="-62dp"
-        tools:layout_editor_absoluteY="-45dp">
+        android:padding="16dp">
 
         <ImageView
             android:id="@+id/product_image"
-            android:layout_width="357dp"
-            android:layout_height="215dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:src="@drawable/prod1" />
-
-        <TextView
-            android:id="@+id/txtproduct_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:text="Nombre del producto"
-            android:textColor="@color/black"
-            android:textSize="34sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/txtproduct_details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Detalles del producto"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="normal" />
-
-        <Button
-            android:id="@+id/btnRentar"
-            android:layout_width="378dp"
-            android:layout_height="64dp"
-            android:backgroundTint="#EFB810"
-            android:text="@string/Rentar"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:cornerRadius="18dp"
+            android:layout_width="237dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/prod1"
+            app:layout_constraintDimensionRatio="H,16:9"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.654"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/txtproduct_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Nombre del producto"
+            android:textColor="@color/black"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/product_image" />
 
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="4"
+            android:stepSize="1"
+            tools:layout_editor_absoluteX="50dp"
+            tools:layout_editor_absoluteY="385dp" />
+
+        <TextView
+            android:id="@+id/txtproduct_marca"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Marca del producto"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ratingBar" />
+
+        <TextView
+            android:id="@+id/txtproduct_descri"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Descripción del producto"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtproduct_marca" />
+
+        <TextView
+            android:id="@+id/Total"
+            android:layout_width="66dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="40dp"
+            android:text="Total:"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtproduct_descri" />
+
+        <TextView
+            android:id="@+id/txtproduct_price"
+            android:layout_width="88dp"
+            android:layout_height="57dp"
+            android:layout_marginEnd="24dp"
+            android:text="Total: $ 100,000"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Total" />
+
+        <TextView
+            android:id="@+id/labelDiasARentar"
+            android:layout_width="131dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="16dp"
+            android:text="Días a rentar:"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtproduct_descri" />
+
+        <TextView
+            android:id="@+id/txtQuantity"
+            android:layout_width="31dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/btnDecrease"
+            app:layout_constraintTop_toBottomOf="@+id/labelDiasARentar" />
+
+        <Button
+            android:id="@+id/btnDecrease"
+            android:layout_width="39dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="25dp"
+            android:text="-"
+            app:layout_constraintBottom_toTopOf="@+id/btnRentar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/labelDiasARentar"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/btnIncrease"
+            android:layout_width="39dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="6dp"
+            android:text="+"
+            app:layout_constraintStart_toEndOf="@+id/txtQuantity"
+            app:layout_constraintTop_toBottomOf="@+id/labelDiasARentar" />
+
+        <Button
+            android:id="@+id/btnRentar"
+            android:layout_width="382dp"
+            android:layout_height="61dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#EFB810"
+            android:text="RENTAR"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            app:cornerRadius="19dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.482"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtproduct_price" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
