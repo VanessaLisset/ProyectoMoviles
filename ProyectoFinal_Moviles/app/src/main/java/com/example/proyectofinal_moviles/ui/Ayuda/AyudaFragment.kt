@@ -13,9 +13,6 @@ import com.example.proyectofinal_moviles.ui.Ayuda.AyudaViewModel
 class AyudaFragment : Fragment() {
 
     private var _binding: AyudaBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -29,10 +26,6 @@ class AyudaFragment : Fragment() {
         _binding = AyudaBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.texAyuda
-        AyudaViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 

@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.proyectofinal_moviles.Registro
 import com.example.proyectofinal_moviles.databinding.FragmentSlideshowBinding
 
 class TerminosYcondicionesFragment : Fragment() {
@@ -22,16 +24,8 @@ class TerminosYcondicionesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val slideshowViewModel =
-            ViewModelProvider(this).get(TerminosYcondicionesViewModel::class.java)
-
         _binding = FragmentSlideshowBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        val textView: TextView = binding.textSlideshow
-        slideshowViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 
